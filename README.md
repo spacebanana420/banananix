@@ -9,12 +9,12 @@ You can also backup your home users' .config folder
 
 You need Ruby to use my program
 
-Add to your configuration.nix:
+* Add to your configuration.nix:
 ```nix
 environment.systemPackages = with pkgs; [ruby];
 ```
 You can also choose a specific version of Ruby if the default isn't the latest (for example `ruby_3_2_2`)
 
-Download my program from the releases once it gets a stable release or download directly from the master branch
+* Download my program from the releases once it gets a stable release or download directly from the master branch
 
-Open a terminal in the same directory as banananix.rb and launch my program with `ruby banananix.rb`
+* Open a terminal in the same directory as banananix.rb and launch my program with `ruby banananix.rb`
