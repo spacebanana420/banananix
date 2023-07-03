@@ -11,7 +11,7 @@ You need Ruby to use my program
 
 Add to your configuration.nix:
 ```nix
-environment.systemPackages = with pkgs; [ruby]
+environment.systemPackages = with pkgs; [ruby];
 ```
 You can also choose a specific version of Ruby if the default isn't the latest (for example `ruby_3_2_2`)
 
