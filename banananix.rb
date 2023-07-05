@@ -7,7 +7,7 @@ if File::exist?("/etc/nixos/configuration.nix") == false
 end
 
 while true
-  puts "0. Exit     1. Add package     2. Remove package     3. Check installed packages
+  puts "0. Exit              1. Add package         2. Remove package     3. Check installed packages
 4. Update system     5. Collect garbage     6. Backup home config\n\nChoose an operation"
 
     operation = gets.chomp
