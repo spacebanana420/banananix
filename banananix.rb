@@ -15,11 +15,11 @@ while true
     when 0
         return
     when 1
-        puts "Type the name of the package to add"; package = gets.chomp
-        nixconfig_add(package)
+        puts "Type the name of the package to add or type '0' to exit"; package = gets.chomp
+        if package != "0" then nixconfig_add(package) end
     when 2
-        puts "Type the name of the package to remove"; package = gets.chomp
-        nixconfig_remove(package)
+        puts "Type the name of the package to remove or type '0' to exit"; package = gets.chomp
+        if package != "0" then nixconfig_remove(package) end
     when 3
         nixconfig_read()
     when 4
