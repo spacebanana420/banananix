@@ -8,10 +8,10 @@ end
 
 while true
   puts "0. Exit              1. Add package         2. Remove package     3. List installed packages
-4. Update system     5. Collect garbage     6. Backup home config\n\nChoose an operation"
+4. Update system     5. Collect garbage     6. Backup home config 7. Open Nix package search\n\nChoose an operation"
 
     operation = gets.chomp
-    if "0123456".include?(operation) == true
+    if "01234567".include?(operation) == true
         case operation.to_i
         when 0
             return
@@ -29,6 +29,8 @@ while true
             system("sudo nix-collect-garbage -d")
         when 6
             get_config_directory()
+        when 7
+            system("xdg-open https://search.nixos.org/packages?query=")
         end
     end
     puts ""
