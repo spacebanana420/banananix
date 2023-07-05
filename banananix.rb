@@ -2,7 +2,7 @@ require "./lib/nixconfig.rb"
 require "./lib/userhome.rb"
 
 if File::exist?("/etc/nixos/configuration.nix") == false
-    puts "File configuration.nix has not been found in /etc/nixos\nAre you on NixOS?"
+    puts "File configuration.nix has not been found in '/etc/nixos/', shutting down...\nAre you on NixOS?"
     return
 end
 
