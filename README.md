@@ -18,6 +18,6 @@ environment.systemPackages = with pkgs; [ruby];
 ```
 You can also choose a specific version of Ruby if the default isn't the latest (for example `ruby_3_2_2`)
 
-* Download my program from the releases once it gets a stable release or download directly from the master branch
+* [Download my program from the releases](https://github.com/spacebanana420/banananix/releases/) or download directly from the master branch, at the risk of getting an unstable development state
 
 * Open a terminal in the same directory as banananix.rb and launch my program with `ruby banananix.rb`
