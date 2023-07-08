@@ -1,5 +1,6 @@
 require "./lib/nixconfig.rb"
 require "./lib/userhome.rb"
+require "./lib/rubygems.rb"
 
 if File::exist?("/etc/nixos/configuration.nix") == false
     puts "File configuration.nix has not been found in '/etc/nixos/', shutting down...\nAre you on NixOS?"
@@ -8,10 +9,10 @@ end
 
 while true
   puts "0. Exit              1. Add package         2. Remove package     3. List installed packages
-4. Update system     5. Collect garbage     6. Backup home config 7. Open Nix package search\n\nChoose an operation"
+4. Update system     5. Collect garbage     6. Install Ruby gems  7. Backup home config\n8. Open Nix package search\n\nChoose an operation"
 
     operation = gets.chomp
-    if "01234567".include?(operation) == true
+    if "012345678".include?(operation) == true
         case operation.to_i
         when 0
             return
@@ -28,8 +29,10 @@ while true
         when 5
             system("sudo nix-collect-garbage -d")
         when 6
-            get_config_directory()
+            install_gems()
         when 7
+            get_config_directory()
+        when 8
             system("xdg-open https://search.nixos.org/packages?query=")
         end
     end
