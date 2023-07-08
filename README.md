@@ -1,9 +1,12 @@
 # Banananix
 Banananix is a frontend tool for NixOS's package management and other system management tasks. Most of its capabilities are meant to be used with NixOS.
 
-Banananix basically adds a TUI interface to add, list and remove packages from your configuration.nix in `environment.systemPackages`
+### Current features
 
-You can also backup your home users' .config folder
+* A TUI interface to add, list and remove packages from your configuration.nix in `environment.systemPackages`
+* Declaratively install and remove Ruby gems
+* Backup your home users' .config folder
+* Quickly update your NixOS system, collect garbage and open search.nixos.org
 
 # How to use
 
