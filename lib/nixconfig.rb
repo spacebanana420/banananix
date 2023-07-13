@@ -121,7 +121,7 @@ def nixconfig_remove(package) #read every single package char by char to fix
 
         if line.include?(package) == true && removepackages == true
             processed_line, foundpackage = get_line_without_package(package, line)
-            config_string += get_line_without_package(package, line)
+            config_string += processed_line
         else
             config_string += line
         end
