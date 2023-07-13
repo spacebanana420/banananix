@@ -85,10 +85,10 @@ def nixconfig_remove(package)
             removepackages = false
         end
 
-        if line.include?(" #{package} ") == true && removepackages == true #test if line includes \n
+        if line.include?(package) == true && removepackages == true #test if line includes \n and fix detection
             foundpackage = true
-            if line != package
-                config_string += line.sub(" #{package} ", "")
+            if line != package && nix_check_separate_packages(package, line) == true
+                config_string += line.sub(package, "")
             end
         else
             config_string += line
@@ -104,15 +104,15 @@ def nixconfig_remove(package)
     end
 end
 
-# def nix_check_separate_packages(packagename, line)
-#     combinedchars = ""
-#     for char in line.chars
-#         if char == " "
-#             combinedchars = ""
-#         else
-#             combinedchars += char
-#             if combinedchars == packagename then return true end
-#         end
-#     end
-#     return false
-# end
+def nix_check_separate_packages(packagename, line)
+    combinedchars = ""
+    for char in line.chars
+        if char == " "
+            if combinedchars == packagename then return true end
+            combinedchars = ""
+        else
+            combinedchars += char
+        end
+    end
+    return false
+end
