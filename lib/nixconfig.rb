@@ -73,25 +73,25 @@ end
 def nixconfig_remove(package)
     config = File::open("/etc/nixos/configuration.nix")
     config_string = ""
-    addpackages = false
+    removepackages = false
     foundpackage = false
 
     while config.eof? == false
         line = config.readline
 
-        if line.include?("environment.systemPackages") == true
-            addpackages = true
-        elsif addpackages == true && line.include?("];") == true
-            addpackages = false
+        if line.include?("environment.systemPackages") == true #needs better checking
+            removepackages = true
+        elsif removepackages == true && line.include?("];") == true
+            removepackages = false
         end
 
-        if line.include?(package) == false || addpackages == false
-            config_string += line
-        elsif line == package
-            config_string += line.sub(package, "")
+        if line.include?(" #{package} ") == true && removepackages == true #test if line includes \n
             foundpackage = true
+            if line != package
+                config_string += line.sub(" #{package} ", "")
+            end
         else
-            foundpackage = true
+            config_string += line
         end
     end
 
@@ -103,3 +103,16 @@ def nixconfig_remove(package)
         puts "The package '#{package}' has not been found in configuration.nix!"
     end
 end
+
+# def nix_check_separate_packages(packagename, line)
+#     combinedchars = ""
+#     for char in line.chars
+#         if char == " "
+#             combinedchars = ""
+#         else
+#             combinedchars += char
+#             if combinedchars == packagename then return true end
+#         end
+#     end
+#     return false
+# end
