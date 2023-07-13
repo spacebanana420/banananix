@@ -110,10 +110,8 @@ def nixconfig_remove(package) #read every single package char by char to fix
     removepackages = false
     foundpackage = false
 
-    while config.eof? == false
-        line = config.readline
-
-        if line.include?("environment.systemPackages") == true #needs better checking
+    for line in config.readlines()
+        if line.include?("environment.systemPackages") == true
             removepackages = true
         elsif removepackages == true && line.include?("];") == true
             removepackages = false
@@ -139,7 +137,7 @@ end
 def get_line_without_package(packagename, line)
     combinedchars = ""
     for char in line.chars
-        if char == " " || char == "\n"
+        if char == " " || char == "\n" || char == "\t"
             if combinedchars == packagename
                 return line.sub(combinedchars, ""), true
             end
@@ -147,6 +145,7 @@ def get_line_without_package(packagename, line)
         else
             combinedchars += char
         end
+        puts "combined chars: #{combinedchars}"
     end
     return line, false
 end
