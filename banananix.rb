@@ -2,17 +2,17 @@ require "./lib/nixconfig.rb"
 require "./lib/userhome.rb"
 require "./lib/rubygems.rb"
 
-if File::exist?("/etc/nixos/configuration.nix") == false
+if File.exist?("/etc/nixos/configuration.nix") == false
     puts "File configuration.nix has not been found in '/etc/nixos/', shutting down...\nAre you on NixOS?"
     return
 end
 
 while true
-  puts "0. Exit              1. Add package         2. Remove package     3. List installed packages
+  puts "BananaNix - The Banana NixOS Control Center\n\n0. Exit              1. Add package         2. Remove package     3. List installed packages
 4. Update system     5. Collect garbage     6. Install Ruby gems  7. Backup home config\n8. Open Nix package search\n\nChoose an operation"
 
     operation = gets.chomp
-    if "012345678".include?(operation) == true
+    if "012345678".include?(operation) == true && operation != ""
         case operation.to_i
         when 0
             return

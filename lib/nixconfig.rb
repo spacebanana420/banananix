@@ -66,7 +66,7 @@ def nixconfig_add(package)
     puts "Package '#{package}' has been added to configuration.nix"
 end
 
-def nixconfig_remove(package) #read every single package char by char to fix
+def nixconfig_remove(package)
     config = File::open("/etc/nixos/configuration.nix")
     config_string = ""
     removepackages = false

@@ -43,7 +43,7 @@ end
 
 def install_gems()
     if File.file?("gemconfig") == false
-        puts "There is no gemconfig in the root folder on banananix!\nCreate a text file named 'gemconfig' and for each line write the name of your gems alongside the condition to install or uninstall\n\nExample of a gemconfig:\n\nrubyzip: true\nmini_magick: false\n\nThe gem 'rubyzip' will be installed if not already and the gem mini_magick will be uninstalled if it's currently installed\nYou can also start the lines with '#' to introduce comments, descriptions, etc which will be ignored by banananix"
+        puts "There is no gemconfig in the root directory of banananix!\nCreate a text file named 'gemconfig' and for each line write the name of your gems alongside the condition to install or uninstall\n\nExample of a gemconfig:\n\nrubyzip: true\nmini_magick: false\n\nThe gem 'rubyzip' will be installed if not already and the gem mini_magick will be uninstalled if it's currently installed\nYou can also start the lines with '#' to introduce comments, descriptions, etc which will be ignored by banananix"
         return
     end
     config_gems, config_gems_condition = get_config_gems()
